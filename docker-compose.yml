@@ -1,0 +1,40 @@
+version: "3.8"
+
+networks:
+  meta:
+    driver: bridge
+
+volumes:
+  postgres:
+  pgadmin:
+
+services:
+
+  database:
+    image: postgres:13.0
+    container_name: database
+    environment: 
+      POSTGRES_DB: ${META_DATABASE_NAME}
+      POSTGRES_USER: ${META_DATABASE_USER}
+      POSTGRES_PASSWORD: ${META_DATABASE_PASSWORD}
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - 5432:5432
+    networks:
+      - meta
+    restart: unless-stopped
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+    volumes:
+      - pgadmin:/root/.pgadmin
+    ports:
+      - 8080:80
+    networks:
+      - meta
+    restart: unless-stopped
