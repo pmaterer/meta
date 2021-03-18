@@ -31,6 +31,10 @@ func main() {
 
 	r := gin.Default()
 	r.POST("/slips", slipHandler.CreateSlip)
+	r.GET("/slips/:id", slipHandler.GetSlip)
+	r.GET("/slips", slipHandler.GetAllSlips)
+	r.PUT("/slips/:id", slipHandler.UpdateSlip)
+	r.DELETE("/slips/:id", slipHandler.DeleteSlip)
 
 	log.Fatal(r.Run(fmt.Sprintf("%s:%d", config.ServerListenAddress, config.ServerListenPort)))
 }
