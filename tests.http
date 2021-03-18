@@ -1,0 +1,39 @@
+### Create slip
+POST http://localhost:9999/slips HTTP/1.1
+Content-Type: application/json
+
+{
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam pharetra, sem eu hendrerit dignissim, arcu ipsum malesuada quam, vel finibus nibh mi quis orci. Donec venenatis non nisl sed dictum. Aenean augue urna, eleifend eget eros in, maximus mollis tellus. In elementum, enim in sagittis aliquet, nisl ligula sollicitudin metus, non commodo risus turpis nec justo. Nam eleifend vulputate interdum. Nullam nulla ante, iaculis sit amet porttitor id, finibus eget felis. Curabitur urna urna, vestibulum ac laoreet ut, aliquet sit amet diam.",
+    "tags": [
+        "one",
+        "two",
+        "three"
+    ]
+}
+
+### Get slip
+
+GET http://localhost:9999/slips/71 HTTP/1.1
+Accept: application/json
+
+### Get all slips
+GET http://localhost:9999/slips HTTP/1.1
+Accept: application/json
+
+### Update slip
+PUT http://localhost:9999/slips/71 HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "body": "Something completely different",
+    "tags": [
+        "justOne",
+        "two"
+    ]
+}
+
+### Delete slip
+
+DELETE http://localhost:9999/slips/78 HTTP/1.1
+Accept: application/json
